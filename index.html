@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absensi Kehadiran Sekolah (Token)</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Web Absensi Kelas</h1>
+            <p id="current-subject">Mata Pelajaran Saat Ini: [Belum Ditentukan]</p>
+            <p id="status-message">Masukkan Token Absensi dari Guru Mapel.</p>
+        </header>
+
+        <div class="attendance-section">
+            <input type="text" id="input-name" placeholder="Masukkan Nama Lengkap Anda" required> <input type="text" id="input-token" placeholder="Masukkan Token 6 Digit" maxlength="6">
+            <button id="btn-absen" onclick="recordAttendance()">Absen HADIR Sekarang</button>
+        </div>
+
+        <button id="btn-guru-menu" onclick="showGuruMenu()">Menu Guru (Admin)</button>
+        <button id="btn-export" onclick="printAttendanceList()">Unduh Daftar Hadir (PDF)</button>
+        <button id="btn-send-email" onclick="sendPdfToTeacher()">Kirim PDF ke Guru (Email)</button>
+
+        <div class="data-section">
+            <h2>Daftar Hadir</h2>
+            <ul id="history-list">
+                </ul>
+        </div>
+    </div>
+
+    <div id="password-overlay" class="overlay hidden">
+        <div class="overlay-content small-content">
+            <h2>Akses Guru</h2>
+            <p>Masukkan sandi rahasia untuk melanjutkan.</p>
+            <input type="password" id="guru-password-input" placeholder="Sandi Guru">
+            <button onclick="verifyGuruPassword()">Masuk</button>
+            <button onclick="hidePasswordOverlay()" class="close-btn">Batal</button>
+        </div>
+    </div>
+
+    <div id="guru-menu-overlay" class="overlay hidden">
+        <div class="overlay-content">
+            <h2>Pengaturan Token</h2>
+            
+            <label for="new-token">Token Aktif Hari Ini:</label>
+            <input type="text" id="new-token" placeholder="Contoh: 123456" maxlength="6">
+            
+            <label for="subject-name">Mata Pelajaran:</label>
+            <input type="text" id="subject-name" placeholder="Contoh: Matematika">
+
+            <button onclick="updateToken()">Simpan Token & Mapel</button>
+            <button onclick="hideGuruMenu()" class="close-btn">Tutup</button>
+        </div>
+    </div>
+    
+    <div id="status-overlay" class="overlay hidden">
+        <div class="overlay-content small-content">
+            <h2 id="overlay-title"></h2>
+            <p id="overlay-message"></p>
+            <button onclick="hideStatusOverlay()" class="close-btn">OK</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

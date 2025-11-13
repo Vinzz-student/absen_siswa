@@ -1,0 +1,299 @@
+:root {
+    --color-dark: #121212; 
+    --color-card: #1f1f1f; 
+    --color-text: #e0e0e0; 
+    --color-placeholder: #a0a0a0;
+    --color-primary: #17ff02; 
+    --color-success: #03DAC6; 
+    --color-warning: #CF6679; 
+    --font-family: 'Inter', sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box; 
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--color-dark);
+    margin: 0;
+    padding: 20px;
+    color: var(--color-text);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    transition: background-color 0.3s;
+}
+
+.container {
+    background-color: var(--color-card);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 420px; 
+    border: 1px solid #303030; 
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    color: var(--color-primary);
+    font-weight: 800;
+    margin-bottom: 8px;
+    font-size: 1.8em;
+}
+
+#current-subject {
+    font-weight: 600;
+    color: var(--color-success);
+    margin: 5px 0;
+}
+
+#status-message {
+    font-weight: 400;
+    color: var(--color-text);
+    font-size: 0.9em;
+}
+
+.attendance-section {
+    margin-bottom: 30px;
+}
+
+#input-name, #input-token {
+    width: 95%; 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    margin-bottom: 15px; 
+    border: none;
+    border-radius: 10px;
+    background-color: #333333; 
+    color: var(--color-text);
+    font-size: 1.1em;
+    text-align: left;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+#input-token {
+    text-align: center;
+}
+
+#input-name::placeholder, #input-token::placeholder, #guru-password-input::placeholder {
+    color: var(--color-placeholder);
+}
+
+#input-name:focus, #input-token:focus, #guru-password-input:focus {
+    outline: none;
+    background-color: #444444;
+}
+
+#btn-absen {
+    width: 100%;
+    padding: 16px 25px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 700;
+    background-color: var(--color-primary);
+    color: var(--color-dark); 
+    box-shadow: 0 4px 20px rgba(0, 80, 7, 0.4);
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+#btn-absen:hover {
+    background-color: #08fa00;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(4, 189, 28, 0.6);
+}
+
+#btn-absen:disabled {
+    background-color: #444444;
+    color: #888888;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+#btn-guru-menu, #btn-export, #btn-send-email {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+#btn-guru-menu {
+    background-color: #444444; 
+    color: var(--color-text);
+    margin-bottom: 5px;
+}
+
+#btn-guru-menu:hover {
+    background-color: #555555;
+}
+
+#btn-export {
+    background-color: #007bff; 
+    color: white;
+}
+
+#btn-export:hover {
+    background-color: #0056b3;
+}
+
+#btn-send-email {
+    background-color: #a10c19; 
+    color: var(--color-dark); 
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+#btn-send-email:hover {
+    background-color: #801221;
+}
+
+.data-section {
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid #721717;
+}
+
+h2 {
+    color: var(--color-text);
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 1.4em;
+}
+
+#history-list {
+    list-style: none;
+    padding: 0;
+}
+
+#history-list li {
+    background-color: #2a2a2a;
+    margin-bottom: 12px;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.95em;
+    border-left: 5px solid var(--color-success);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+#history-list .date-time {
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 4px;
+    font-size: 1.05em;
+}
+
+#history-list .location {
+    font-size: 0.8em;
+    color: #b0b0b0;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.overlay.hidden {
+    display: none;
+}
+
+.overlay-content {
+    background-color: var(--color-card);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(187, 134, 252, 0.2);
+    width: 85%;
+    max-width: 350px;
+    border: 1px solid #333333;
+}
+
+.overlay-content.small-content {
+    max-width: 300px;
+    padding: 20px;
+    text-align: center;
+    word-break: break-word; 
+}
+
+.overlay-content h2 {
+    color: var(--color-primary);
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.6em;
+}
+
+.overlay-content label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: var(--color-text);
+    font-weight: 600;
+    text-align: center; 
+}
+
+.overlay-content input {
+    margin-bottom: 15px;
+    display: block;
+    width: 80%; 
+    max-width: 200px; 
+    padding: 12px;
+    background-color: #333333;
+    color: var(--color-text);
+    border: 1px solid #444444;
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+#guru-password-input {
+    text-align: center;
+}
+
+#new-token, #subject-name {
+    text-align: left;
+}
+
+.overlay-content button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    font-weight: 600;
+    background-color: var(--color-primary);
+    color: var(--color-dark);
+    border: none;
+    border-radius: 8px;
+    transition: opacity 0.3s;
+}
+
+.overlay-content button:hover {
+    opacity: 0.8;
+}
+
+.overlay-content .close-btn {
+    background-color: var(--color-warning);
+    color: var(--color-dark);
+}
